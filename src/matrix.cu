@@ -82,15 +82,3 @@ void GPU_multiplication(
 	//Copy Answer
 	CUDA_CHECK(cudaMemcpy( C.data(), data_C, C_size, cudaMemcpyDeviceToHost));
 }
-
-
-void quitCUDA(){
-	CUDA_CHECK(cudaFree(data_A));
-	CUDA_CHECK(cudaFree(data_B));
-	CUDA_CHECK(cudaFree(data_C));
-
-	// Never done this before lol
-	// This is disgusting.
-	data_A = data_B = data_C = nullptr;
-	space_A = space_B = space_C = 0;
-}
