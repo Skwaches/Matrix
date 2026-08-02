@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(library Matrix)
 
 # Add Library
-add_library( "${library}" 	
+add_library( "${library}"
 	src/matrix.cpp
 	src/matrix.cu
 	src/kernel.cu
@@ -19,7 +19,7 @@ target_include_directories("${library}" PUBLIC
 )
 # Allow cuda compilation.
 set_property(TARGET "${library}"
-	PROPERTY CMAKE_CUDA_SEPARABLE_COMPILATION ON)
+	PROPERTY CUDA_SEPARABLE_COMPILATION ON)
 
 if("${PROJECT_IS_TOP_LEVEL}")
 	set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
