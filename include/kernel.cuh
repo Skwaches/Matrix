@@ -14,7 +14,6 @@ extern float *data_C;
 extern int threadsPerBlock;
 
 void allocate(size_t size_A, size_t size_B, size_t size_C);
-void quitCUDA();
 __global__ void addition_kernel_D( float* A, const float B, float* C, int size);
 __global__ void multiplication_kernel_D( float* A, const float B, float* C, int size);
 __global__ void addition_kernel( float* A, const float* B, float* C, int size);

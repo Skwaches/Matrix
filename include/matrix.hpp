@@ -2,13 +2,14 @@
 #include <vector>
 #include <functional>
 #include <iostream>
+#include "matrix.cuh"
 
 // Whether or not to use the GPU for operations
-// Defaults to true
-extern bool GPU;
-
-// This 
-void quitCUDA();
+#ifdef CUDA_AVAILABLE 
+extern const bool GPU;
+#else
+#define GPU false
+#endif
 
 class Matrix {
 	private:

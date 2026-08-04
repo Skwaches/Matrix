@@ -1,4 +1,5 @@
 #include "kernel.cuh"
+#include "matrix.cuh"
 
 float *data_A = nullptr, 
 			  *data_B = nullptr,
@@ -67,6 +68,7 @@ __global__ void multiplication_kernel(
 		}
 	}
 }
+
 void quitCUDA(){
 	CUDA_CHECK(cudaFree(data_A));
 	CUDA_CHECK(cudaFree(data_B));

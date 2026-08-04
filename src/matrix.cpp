@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include "matrix.cuh"
 
-bool GPU = true;
 Matrix::Matrix(int rows, int columns):
 	rows(rows),columns(columns),data(rows * columns,0.00)
 {}

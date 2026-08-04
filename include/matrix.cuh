@@ -1,6 +1,6 @@
 #pragma once
-
 #include <vector>
+
 void GPU_addition_D(
 		std::vector<float>& A,
 		const float B,
@@ -22,5 +22,4 @@ void GPU_multiplication(
 		int columns, // Second Matrix columns
 		int shared // Columns of the first & Rows of the second
 		);
-
 void quitCUDA();
