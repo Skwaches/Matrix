@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(library Matrix)
 
-# Dynamically use cuda if available.
-option(CUDA_ON "Attempt to use the GPU for matrix multiplication." OFF)
+# Dynamically use CUDA if available.
+option(CUDA_ON "Attempt to use the GPU for matrix multiplication." ON)
 set(CUDA_AVAILABLE FALSE)
 if(${CUDA_ON})
 	include(CheckLanguage)
