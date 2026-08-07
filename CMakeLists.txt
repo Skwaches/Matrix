@@ -7,18 +7,15 @@ set(library Matrix)
 
 # Dynamically use CUDA if available.
 option(CUDA_ON "Attempt to use the GPU for matrix multiplication." ON)
-set(CUDA_AVAILABLE FALSE)
+set(CUDA_AVAILABLE FALSE PARENT_SCOPE)
 if(${CUDA_ON})
 	include(CheckLanguage)
 	check_language(CUDA)
 	if(CMAKE_CUDA_COMPILER)
 		enable_language(CUDA)
 		set(CUDA_AVAILABLE TRUE)
-		message(STATUS "CUDA compiler has been identified. "
-			"${CMAKE_CUDA_COMPILER}")
 	else()
-		message(WARNING "CUDA compiler has not been found. ${CMAKE_CUDA_COMPILER}: " 
-			"Attempting CPU only build.")
+		message(WARNING "CUDA compiler has not been found. Attempting CPU only build.")
 	endif()
 endif()
 
@@ -42,7 +39,10 @@ target_compile_definitions("${library}" PRIVATE
 if (${CUDA_AVAILABLE})
 	find_package(CUDAToolkit)
 	set_property(TARGET "${library}"
-		PROPERTY CUDA_SEPARABLE_COMPILATION ON)
+		PROPERTY
+		CUDA_SEPARABLE_COMPILATION ON
+		CUDA_RESOLVE_DEVICE_SYMBOLS ON
+	)
 	target_link_libraries("${library}" PRIVATE CUDA::cudart_static)
 endif()
 
